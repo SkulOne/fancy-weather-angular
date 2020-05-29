@@ -1,0 +1,10 @@
+{
+  "DAY-INFO": {
+    "TITLE": "Feels like: {{first.current.feelslike_c}}°",
+    "WIND": "Wind: {{first.current.wind_kph}}m/s",
+    "HUMIDITY": "Humidity: {{first.current.humidity}}%"
+  },"LOCATION-INFO": {
+  "LATITUDE": "Latitude: {{latitude.int}}°{{latitude.frac}}'",
+  "LONGITUDE": "Longitude: {{longitude.int}}°{{longitude.frac}}'"
+}
+}

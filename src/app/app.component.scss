@@ -40,6 +40,7 @@ main {
   background: rgba(174, 181, 185, 0.5);
   border-radius: 5px;
   border-style: none;
+  text-transform: uppercase;
 }
 
 .temperature-c, .temperature-f {
@@ -111,6 +112,7 @@ input[type="text"]{
 }
 
 .day-info{
+  position: relative;
   display: flex;
   align-items: flex-end;
 }
@@ -151,9 +153,8 @@ ul{
 .weather-icon{
   width: 250px;
   position: absolute;
-
-  left: 26.74%;
-  top: 22.5%;
+  left: 230px;
+  bottom: 150px;
 }
 
 .next-three{
@@ -212,6 +213,10 @@ ul{
   border-radius: 20px;
   overflow: hidden;
   margin-top: 20px;
+}
+
+.languages{
+  text-transform: uppercase;
 }
 
 @font-face {

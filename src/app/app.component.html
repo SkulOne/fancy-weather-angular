@@ -2,10 +2,9 @@
   <section class="control-unit">
     <div class="control-unit-buttons">
       <button class="refresh-image"></button>
-      <select name="" id="" class="change-language">
-        <option value="en">EN</option>
-        <option value="ru">RU</option>
-        <option value="be">BR</option>
+      <select #langSelect (change)="translate.use(langSelect.value)" class="change-language">
+        <option class="languages" *ngFor="let lang of translate.getLangs()" [value]="lang"
+                [selected]="lang === translate.currentLang">{{ lang }}</option>
       </select>
       <button class="temperature-f">°F</button>
       <button class="temperature-c button-active">°C</button>
@@ -20,28 +19,28 @@
   <section class="weather" *ngIf="weatherData | async as data">
     <div class="today">
       <div class="header">
-        <h1 class="city" id="title">{{data.first.location.name}}, {{data.first.location.country}}</h1>
-        <span class="date" id="date">{{date}}</span>
+        <h1 class="city">{{data.first.location.name}}, {{data.first.location.country}}</h1>
+        <span class="date">{{date}}</span>
       </div>
       <div class="day-info">
-        <span class="temperature-value" id="current-value">{{data.first.current.temp_c | number:'1.0-0'}}</span>
+        <span class="temperature-value">{{data.first.current.temp_c | number:'1.0-0'}}</span>
+        <img src="../assets/icons/cloudy-day-1.svg" alt="" class="weather-icon" data-weather>
         <div class="day-param">
-          <img src="../assets/icons/cloudy-day-1.svg" alt="" class="weather-icon" data-weather>
           <ul class="">
-            <li class="day-condition" id="condition">{{data.first.current.condition.text}}</li>
-            <li class="feeling" id="feel">Feels like: {{data.first.current.feelslike_c | number:'1.0-0'}}°</li>
-            <li class="wind" id="wind">Wind: {{data.first.current.wind_kph}}m/s</li>
-            <li class="humidity" id="humidity">Humidity: {{data.first.current.humidity}}%</li>
+            <li class="day-condition">{{data.first.current.condition.text}}</li>
+            <li class="feeling">{{'DAY-INFO.TITLE' | translate: data}}</li>
+            <li class="wind">{{'DAY-INFO.WIND' | translate: data}}</li>
+            <li class="humidity">{{'DAY-INFO.HUMIDITY' | translate: data}}</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="next-three">
       <div class="day" *ngFor="let day of data.rest">
-        <span class="day-of-week" id="day-week-1">{{getWeekDay(day)}}</span>
+        <span class="day-of-week">{{getWeekDay(day)}}</span>
         <div class="day-of-week-param">
-          <span class="day-value" id="day-value-1">{{day.forecast.forecastday[0].day.avgtemp_c | number:'1.0-0'}}°</span>
-          <img src="../assets/icons/day.svg" alt="" class="day-weather-icon" id="day-icon-1">
+          <span class="day-value">{{day.forecast.forecastday[0].day.avgtemp_c | number:'1.0-0'}}°</span>
+          <img src="../assets/icons/day.svg" alt="" class="day-weather-icon">
         </div>
       </div>
     </div>
@@ -49,8 +48,8 @@
   <section class="geolocation-data">
     <div id="map"></div>
     <div class="location-param" *ngIf="coords">
-      <span class="latitude" data-weather>Latitude: {{this.coords.latitude.int}}°{{this.coords.latitude.frac}}'</span>
-      <span class="longitude" data-weather>Longitude: {{this.coords.longitude.int}}°{{this.coords.longitude.frac}}'</span>
+      <span class="latitude">{{'LOCATION-INFO.LATITUDE' | translate: this.coords}}</span>
+      <span class="longitude">{{'LOCATION-INFO.LONGITUDE' | translate: this.coords}}</span>
     </div>
   </section>
 </main>
