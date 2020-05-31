@@ -27,12 +27,40 @@ main {
 }
 
 .refresh-image {
+  position: relative;
   width: 44px;
   height: 44px;
   background: rgba(180, 184, 187, 0.4);
   border-radius: 5px;
   border-style: none;
+  overflow: hidden;
+  padding: 0;
 }
+
+.refresh-image:before, .refresh-image:after{
+  display: block;
+  position: absolute;
+  content: " ";
+  width: 44px;
+  height: 44px;
+  transform: rotate(45deg);
+  box-shadow: 4px -3px 4px 0px #00000038;
+}
+
+.refresh-image:before {
+  top: 25px;
+  left: 12px;
+  z-index: 0;
+  background: #979a9cbd;
+}
+
+.refresh-image:after {
+  top: 32px;
+  right: 14px;
+  z-index: 1;
+  background: #a8adb0;
+}
+
 
 .change-language{
   width: 71px;
@@ -41,6 +69,7 @@ main {
   border-radius: 5px;
   border-style: none;
   text-transform: uppercase;
+  padding: 0 10px;
 }
 
 .temperature-c, .temperature-f {
@@ -153,7 +182,7 @@ ul{
 .weather-icon{
   width: 250px;
   position: absolute;
-  left: 230px;
+  left: 305px;
   bottom: 150px;
 }
 
@@ -248,4 +277,31 @@ ul{
   src: url('../assets/fonts/montserratblack.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
+}
+
+mat-icon{
+
+}
+
+.refresh{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  text-shadow: 0 0 5px #000000bd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes anim-rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.refresh-animation{
+  animation: anim-rotate 2s infinite linear;
 }

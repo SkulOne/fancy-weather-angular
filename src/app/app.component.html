@@ -1,13 +1,17 @@
 <header>
   <section class="control-unit">
     <div class="control-unit-buttons">
-      <button class="refresh-image"></button>
-      <select #langSelect (change)="translate.use(langSelect.value)" class="change-language">
+      <button class="refresh-image">
+        <div #refreshBtn class="refresh" (click)="clickRefreshBtn(refreshBtn)">
+          <mat-icon  aria-hidden="false" aria-label="Example home icon">refresh</mat-icon>
+        </div>
+      </button>
+      <select #langSelect (change)="changeLanguage(langSelect.value)" class="change-language">
         <option class="languages" *ngFor="let lang of translate.getLangs()" [value]="lang"
                 [selected]="lang === translate.currentLang">{{ lang }}</option>
       </select>
-      <button class="temperature-f">°F</button>
-      <button class="temperature-c button-active">°C</button>
+      <button class="temperature-f" (click)="changeWeatherUnit('f')">°F</button>
+      <button class="temperature-c" (click)="changeWeatherUnit('c')">°C</button>
     </div>
     <div class="search-container">
       <input placeholder="Search city or ZIP" type="text" class="search" #searchInput>
@@ -23,8 +27,8 @@
         <span class="date">{{date}}</span>
       </div>
       <div class="day-info">
-        <span class="temperature-value">{{data.first.current.temp_c | number:'1.0-0'}}</span>
-        <img src="../assets/icons/cloudy-day-1.svg" alt="" class="weather-icon" data-weather>
+        <span class="temperature-value" #temp> {{getWeatherTemp(data.first.current) | number:'1.0-0'}}</span>
+        <img src="{{getWeatherIcon(data.first.current.condition.icon)}}" alt="" class="weather-icon" data-weather>
         <div class="day-param">
           <ul class="">
             <li class="day-condition">{{data.first.current.condition.text}}</li>
@@ -37,10 +41,10 @@
     </div>
     <div class="next-three">
       <div class="day" *ngFor="let day of data.rest">
-        <span class="day-of-week">{{getWeekDay(day)}}</span>
+        <span class="day-of-week">{{getWeekDayNextThree(day)}}</span>
         <div class="day-of-week-param">
-          <span class="day-value">{{day.forecast.forecastday[0].day.avgtemp_c | number:'1.0-0'}}°</span>
-          <img src="../assets/icons/day.svg" alt="" class="day-weather-icon">
+          <span class="day-value" #temp>{{getTempNextThree(day.forecast.forecastday[0].day)| number:'1.0-0'}}°</span>
+          <img src="{{getWeatherIcon(day.forecast.forecastday[0].day.condition.icon)}}" alt="" class="day-weather-icon">
         </div>
       </div>
     </div>
