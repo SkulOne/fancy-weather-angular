@@ -1,0 +1,11 @@
+{
+  "DAY-INFO": {
+    "TITLE": "Ощущается: {{first.current.feelslike_c}}°",
+    "WIND": "Ветер: {{first.current.wind_kph}}м/с",
+    "HUMIDITY": "Влажность: {{first.current.humidity}}%"
+  },
+  "LOCATION-INFO": {
+    "LATITUDE": "Широта: {{latitude.int}}°{{latitude.frac}}'",
+    "LONGITUDE": "Долгота: {{longitude.int}}°{{longitude.frac}}'"
+  }
+}
