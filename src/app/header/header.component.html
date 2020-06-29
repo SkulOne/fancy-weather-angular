@@ -1,0 +1,17 @@
+  <section class="control-unit">
+    <div class="control-unit-buttons">
+      <button class="refresh-image">
+        <div #refreshBtn class="refresh" (click)="clickRefreshBtn(refreshBtn)">
+          <mat-icon aria-hidden="false" aria-label="refresh-btn">refresh</mat-icon>
+        </div>
+      </button>
+      <select #langSelect (change)="changeLanguage(langSelect.value)" class="change-language">
+        <option class="languages" *ngFor="let lang of translate.getLangs()" [value]="lang"
+                [selected]="lang === translate.currentLang">{{ lang }}</option>
+      </select>
+    </div>
+      <form #f="ngForm" action="" (ngSubmit)="submit(f)" class="search-container">
+        <input id="#geocoder" #element="ngModel" class="search" name="city" ngModel placeholder="Search city" type="text" autocomplete="off">
+        <input class="search-button" type="submit">
+      </form>
+  </section>

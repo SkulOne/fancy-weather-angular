@@ -1,0 +1,28 @@
+<section *ngIf="weatherData | async as data">
+  <div class="today">
+    <div class="header">
+      <h1 class="city">{{data.first.location.name}}, {{data.first.location.country}}</h1>
+      <span class="date">{{date}}</span>
+    </div>
+    <div class="day-info">
+      <span class="temperature-value"> {{data.first.current.temp_c | number:'1.0-0'}}</span>
+      <img src="{{getWeatherIcon(data.first.current.condition.icon)}}" alt="" class="weather-icon" data-weather>
+      <div class="day-param" >
+        <ul class="">
+          <li class="feeling">{{'DAY-INFO.TITLE' | translate: data}}</li>
+          <li class="wind">{{'DAY-INFO.WIND' | translate: data}}</li>
+          <li class="humidity">{{'DAY-INFO.HUMIDITY' | translate: data}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="next-three">
+    <div class="day" *ngFor="let day of data.rest">
+      <span class="day-of-week">{{getWeekDayNextThree(day)}}</span>
+      <div class="day-of-week-param">
+        <span class="day-value">{{day.forecast.forecastday[0].day.avgtemp_c| number:'1.0-0'}}°</span>
+        <img src="{{getWeatherIcon(day.forecast.forecastday[0].day.condition.icon)}}" alt="" class="day-weather-icon">
+      </div>
+    </div>
+  </div>
+</section>

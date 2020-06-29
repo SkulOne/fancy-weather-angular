@@ -1,59 +1,7 @@
 <header>
-  <section class="control-unit">
-    <div class="control-unit-buttons">
-      <button class="refresh-image">
-        <div #refreshBtn class="refresh" (click)="clickRefreshBtn(refreshBtn)">
-          <mat-icon  aria-hidden="false" aria-label="Example home icon">refresh</mat-icon>
-        </div>
-      </button>
-      <select #langSelect (change)="changeLanguage(langSelect.value)" class="change-language">
-        <option class="languages" *ngFor="let lang of translate.getLangs()" [value]="lang"
-                [selected]="lang === translate.currentLang">{{ lang }}</option>
-      </select>
-      <button class="temperature-f" (click)="changeWeatherUnit('f')">°F</button>
-      <button class="temperature-c" (click)="changeWeatherUnit('c')">°C</button>
-    </div>
-    <div class="search-container">
-      <input placeholder="Search city or ZIP" type="text" class="search" #searchInput>
-      <button class="search-button" (click)="searchButtonClick(searchInput.value)">Search</button>
-    </div>
-  </section>
+    <app-header></app-header>
 </header>
 <main>
-  <section class="weather" *ngIf="weatherData | async as data">
-    <div class="today">
-      <div class="header">
-        <h1 class="city">{{data.first.location.name}}, {{data.first.location.country}}</h1>
-        <span class="date">{{date}}</span>
-      </div>
-      <div class="day-info">
-        <span class="temperature-value" #temp> {{getWeatherTemp(data.first.current) | number:'1.0-0'}}</span>
-        <img src="{{getWeatherIcon(data.first.current.condition.icon)}}" alt="" class="weather-icon" data-weather>
-        <div class="day-param">
-          <ul class="">
-            <li class="day-condition">{{data.first.current.condition.text}}</li>
-            <li class="feeling">{{'DAY-INFO.TITLE' | translate: data}}</li>
-            <li class="wind">{{'DAY-INFO.WIND' | translate: data}}</li>
-            <li class="humidity">{{'DAY-INFO.HUMIDITY' | translate: data}}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="next-three">
-      <div class="day" *ngFor="let day of data.rest">
-        <span class="day-of-week">{{getWeekDayNextThree(day)}}</span>
-        <div class="day-of-week-param">
-          <span class="day-value" #temp>{{getTempNextThree(day.forecast.forecastday[0].day)| number:'1.0-0'}}°</span>
-          <img src="{{getWeatherIcon(day.forecast.forecastday[0].day.condition.icon)}}" alt="" class="day-weather-icon">
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="geolocation-data">
-    <div id="map"></div>
-    <div class="location-param" *ngIf="coords">
-      <span class="latitude">{{'LOCATION-INFO.LATITUDE' | translate: this.coords}}</span>
-      <span class="longitude">{{'LOCATION-INFO.LONGITUDE' | translate: this.coords}}</span>
-    </div>
-  </section>
+  <app-weather></app-weather>
+  <app-map></app-map>
 </main>

@@ -1,0 +1,89 @@
+.today{
+  display: flex;
+  flex-direction: column;
+}
+
+.city{
+  font-size: 44px;
+  line-height: 54px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.date{
+  font-size: 24px;
+}
+
+.day-info{
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+
+
+.temperature-value{
+  font-size: 306px;
+  line-height: 373px;
+}
+
+.weather-icon{
+  width: 250px;
+  position: absolute;
+  left: 305px;
+  bottom: 150px;
+}
+
+.day-param{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 30px;
+}
+
+.day-condition, .feeling, .wind, .humidity {
+  font-size: 22px;
+  line-height: 37px;
+  text-transform: uppercase;
+}
+
+.next-three{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 585px;
+}
+
+.day{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.day-of-week{
+  text-transform: uppercase;
+  width: 160px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.day-of-week-param{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.day-value{
+  font-size: 80px;
+}
+
+.day-weather-icon{
+  position: relative;
+  width: 100px;
+  right: 30px;
+  bottom: 15px;
+}
+
+ul{
+  list-style-type: none;
+}
