@@ -121,6 +121,14 @@
               "devServerTarget": "fancy-weather-angular:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/fancy-weather-angular",
+            "netlifyToken": "4bd793880e32d30e883dd9b5ce22f2a7424d98d2ba626f6d4f43f1148683f1fe",
+            "siteId": "3e10288b-395c-4a8c-bb8b-c61608006347"
+          }
         }
       }
     }

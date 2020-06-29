@@ -20,7 +20,7 @@ export class WeatherComponent implements OnInit {
 
   @ViewChildren('dayValues') dayValues: QueryList<any>;
 
-  weatherData: WeatherData;
+  weatherData;
   date: string;
   weatherUnit: string;
 
